@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import api from "../../services/api";
+import api, { assetUrl } from "../../services/api";
 import StatusStepper from "../../components/StatusStepper";
 import {
   FileCheck,
@@ -110,7 +110,7 @@ const MyApplications = () => {
                 <div className="flex items-center gap-2 self-start sm:self-auto">
                   {app.resume?.url && (
                     <a
-                      href={app.resume.url}
+                      href={assetUrl(app.resume.url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 rounded-lg transition-colors"

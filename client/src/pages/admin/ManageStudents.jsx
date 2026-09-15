@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from "../../services/api";
+import api, { assetUrl } from "../../services/api";
 import {
   Users,
   Search,
@@ -250,7 +250,7 @@ const ManageStudents = () => {
                   </div>
                 </div>
                 <a
-                  href={selectedStudent.resume.url}
+                  href={assetUrl(selectedStudent.resume.url)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg flex items-center gap-1.5 shadow-sm"

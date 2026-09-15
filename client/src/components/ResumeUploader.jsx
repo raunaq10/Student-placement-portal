@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "../services/api";
+import api, { assetUrl } from "../services/api";
 import { UploadCloud, FileText, CheckCircle2, AlertCircle, Download, RefreshCw } from "lucide-react";
 
 const ResumeUploader = ({ currentResume, onUploadSuccess }) => {
@@ -102,7 +102,7 @@ const ResumeUploader = ({ currentResume, onUploadSuccess }) => {
           </div>
 
           <a
-            href={currentResume.url}
+            href={assetUrl(currentResume.url)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 rounded-lg shadow-sm transition-colors"

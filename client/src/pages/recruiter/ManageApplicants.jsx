@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import api from "../../services/api";
+import api, { assetUrl } from "../../services/api";
 import {
   Users,
   Briefcase,
@@ -233,7 +233,7 @@ const ManageApplicants = () => {
                     <td className="px-6 py-4">
                       {app.resume?.url ? (
                         <a
-                          href={app.resume.url}
+                          href={assetUrl(app.resume.url)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-lg border border-indigo-200 transition-colors"

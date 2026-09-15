@@ -1,7 +1,20 @@
 import axios from "axios";
 
+// Production (Vercel): set VITE_API_URL to https://YOUR-RENDER.onrender.com/api
+// Local dev: falls back to /api (Vite proxy → localhost:5000)
+const API_BASE = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+export const API_ORIGIN = API_BASE.replace(/\/api$/, "") || "";
+
+/** Resolve resume/upload paths against the API host in production */
+export function assetUrl(path) {
+  if (!path) return path;
+  if (/^https?:\/\//i.test(path)) return path;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return API_ORIGIN ? `${API_ORIGIN}${normalized}` : normalized;
+}
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: API_BASE,
 });
 
 // Attach token to every request if available
